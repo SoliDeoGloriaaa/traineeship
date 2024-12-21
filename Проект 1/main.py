@@ -21,8 +21,11 @@ def main():
 
     # Уведомляем о сильных колебаниях
     dd.notify_if_strong_fluctuations(stock_data, threshold)
+    
+    # Экспрот данных в CSV файл
+    dd.export_data_to_csv(stock_data, input('Введите название файла для экспорта: ') + '.csv')
 
-    # Наносим дакнные на график
+    # Наносим данные на график
     dplt.create_and_save_plot(stock_data, ticker, period)
 
 

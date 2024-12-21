@@ -1,8 +1,11 @@
 import matplotlib.pyplot as plt
 import pandas as pd
-
+from pathlib import Path
 
 def create_and_save_plot(data, ticker, period, filename=None):
+    """
+    Создаем и сохраняем данные на графике.
+    """
     plt.figure(figsize=(10, 6))
 
     if 'Date' not in data:
@@ -27,5 +30,9 @@ def create_and_save_plot(data, ticker, period, filename=None):
     if filename is None:
         filename = f"{ticker}_{period}_stock_price_chart.png"
 
-    plt.savefig(filename)
-    print(f"График сохранен как {filename}")
+    directory = Path("D:/DEV/project_1/media")
+    filepath = directory / filename
+    directory.mkdir(parents=True, exist_ok=True)
+
+    plt.savefig(filepath)
+    print(f"График успешно сохранен в {filepath}")
